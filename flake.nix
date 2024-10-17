@@ -25,7 +25,9 @@
         in
         {
           treefmt = (treefmt-nix.lib.evalModule pkgs treefmtModule).config.build.check self;
-          # packageTest = packageTest;
+          packageTest = pkgs.runCommand "package-test" { } ''
+            exit 1
+          '';
         }
       );
 
